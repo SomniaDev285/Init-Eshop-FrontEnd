@@ -15,14 +15,14 @@ const Welcome = () => {
   const ref = useRef(null)
 
   useEffect(() => {
-    if (companyName.length > 0 && stepper == 'company') {
+    if (companyName.length > 0 && stepper === 'company') {
       ref.current.style = 'opacity: 1; cursor: pointer'
     } else {
       ref.current.style = 'opacity: 0.5; cursor: default'
     }
   }, [companyName, setCompanyName])
   useEffect(() => {
-    if (warehouseName.length > 0 && stepper == 'warehouse') {
+    if (warehouseName.length > 0 && stepper === 'warehouse') {
       ref.current.style = 'opacity: 1; cursor: pointer'
     } else {
       ref.current.style = 'opacity: 0.5; cursor: default'
@@ -35,7 +35,7 @@ const Welcome = () => {
   }
 
   const handleNextWelcoming = () => {
-    if (companyName.length > 0 && stepper == 'company') {
+    if (companyName.length > 0 && stepper === 'company') {
       setStepper('warehouse')
       if (warehouseName.length === 0) {
         ref.current.style = 'opacity: 0.5; cursor: default'
@@ -45,14 +45,14 @@ const Welcome = () => {
         secondLine: '',
         label: 'Warehouse Name',
       })
-    } else if (warehouseName.length > 0 && stepper == 'warehouse') {
+    } else if (warehouseName.length > 0 && stepper === 'warehouse') {
       setStepper('finish')
       setWelcomeTopic({
         firstLine: 'Congratulations!',
         secondLine: 'You created your first company on E-Shop',
         label: '',
       })
-    } else if (stepper == 'finish') {
+    } else if (stepper === 'finish') {
       addProfile()
     }
   }

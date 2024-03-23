@@ -1,3 +1,3 @@
-import sidebarData from './data.json'
+import sidebarData from './sidebarData.json'
 
 export { sidebarData }
