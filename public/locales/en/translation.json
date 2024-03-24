@@ -1,0 +1,12 @@
+{
+        "welcome": {
+            "companyFirstLine": "You haven’t created your company yet!",
+            "companySecondLine": "Pick a name for your company:",
+            "warehouseFirstLine": "Pick a name for your warehouse:",
+            "doneFirstLine": "Congratulations!",
+            "doneSecondLine": "You created your first company on E-Shop",
+            "CompanyName": "Company Name",
+            "WarehouseName": "Warehouse Name",
+            "finish": "Finish"
+        }
+    }
