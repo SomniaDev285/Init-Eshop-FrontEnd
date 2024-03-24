@@ -1,12 +1,14 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Welcome from '../views/welcome/Welcome'
+import Warehouse from '../views/warehouse/Warehouse'
 
 const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" exact element={<Welcome />} />
+                <Route path="/warehouse" exact element={<Warehouse />} />
                 {/* <Route path="/phonebook" element={<PhonebookMain />} />
               <Route path="/phonebook/team/:userID" element={<TeamView />} />
               <Route path="/login" element={<LoginForm />} /> */}

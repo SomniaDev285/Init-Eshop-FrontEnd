@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Dashboard",
+    "iconName": "",
+    "tag": "Pro",
+    "children": []
+  },
+  {
+    "id": 2,
+    "name": "Warehouses",
+    "iconName": "inventoryIcon",
+    "tag": "",
+    "children": [
+      {
+        "id": 3,
+        "name": "Main Warehouse",
+        "iconName": "productsIcon",
+        "tag": "",
+        "children": []
+      },
+      {
+        "id": 4,
+        "name": "Secondary Warehouse",
+        "iconName": "",
+        "tag": "",
+        "children": []
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Products",
+    "iconName": "settingsIcon",
+    "tag": "",
+    "children": []
+  }
+]
