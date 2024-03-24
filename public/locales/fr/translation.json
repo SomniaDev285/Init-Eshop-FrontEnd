@@ -1,0 +1,12 @@
+{
+        "welcome": {
+            "companyFirstLine": "Vous n’avez pas encore créé votre entreprise!",
+            "companySecondLine": "Choisissez un nom pour votre entreprise :",
+            "warehouseFirstLine": "Choisissez un nom pour votre entrepôt :",
+            "doneFirstLine": "Félicitations!!",
+            "doneSecondLine": "Vous avez créé votre première entreprise sur E-Shop",
+            "CompanyName": "Nom de l'entreprise",
+            "WarehouseName": "Nom de l'entrepôt",
+            "finish": "Finition"
+        }
+    }
