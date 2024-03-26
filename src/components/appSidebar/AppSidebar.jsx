@@ -72,21 +72,45 @@ const SidebarItem = ({ item }) => {
   )
 }
 
+
 const AppSidebar = ({ sidebarData }) => {
+  let isMobile = null
+  const ref = useRef(null);
+  const newRef = useRef(null);
+  const toggleSideBar = () => {
+    ref.current.style = 'transform: translate(0, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))'
+  }
+
+  useEffect(() => {
+    isMobile = window.getComputedStyle(newRef.current.querySelector('.toggleBtn')).display !== 'none' ? true : false
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  });
+
+  const handleOutsideClick = (e) => {
+    if (newRef.current && !newRef.current.contains(e.target) && isMobile) {
+      ref.current.style = 'transform: translate(-100%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))'
+    }
+  };
+
   return (
-    <div>
+    <div ref={newRef} className='w-64'>
       <button
         data-drawer-target="sidebar-multi-level-sidebar"
         data-drawer-toggle="sidebar-multi-level-sidebar"
         aria-controls="sidebar-multi-level-sidebar"
         type="button"
-        className="inline-flex left-0 items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        onClick={toggleSideBar}
+        className="inline-flex toggleBtn left-0 items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       >
         <span className="sr-only">Open sidebar</span>
         <img src={barIcon} className="w-6 h-6" alt=""></img>
       </button>
 
       <aside
+        ref={ref}
         id="sidebar-multi-level-sidebar"
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"

@@ -1,10 +1,10 @@
 import React from 'react'
 import { AppSidebar } from '../../components'
 import { sidebarData } from '../../mock'
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
 
 const Warehouse = () => {
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
   return (
     <>
       <AppSidebar sidebarData={sidebarData} />
