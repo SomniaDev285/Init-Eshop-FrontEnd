@@ -4,6 +4,7 @@
     "name": "Dashboard",
     "iconName": "",
     "tag": "Pro",
+    "link": "/",
     "children": []
   },
   {
@@ -11,12 +12,14 @@
     "name": "Warehouses",
     "iconName": "inventoryIcon",
     "tag": "",
+    "link": "/",
     "children": [
       {
         "id": 3,
         "name": "Main Warehouse",
         "iconName": "productsIcon",
         "tag": "",
+        "link": "/dashboard/warehouse/1",
         "children": []
       },
       {
@@ -24,6 +27,7 @@
         "name": "Secondary Warehouse",
         "iconName": "",
         "tag": "",
+        "link": "/dashboard/warehouse/2",
         "children": []
       }
     ]
@@ -33,6 +37,7 @@
     "name": "Products",
     "iconName": "settingsIcon",
     "tag": "",
+    "link": "/",
     "children": []
   }
 ]

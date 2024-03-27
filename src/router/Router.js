@@ -2,13 +2,18 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Welcome from '../views/welcome/Welcome'
 import Warehouse from '../views/warehouse/Warehouse'
+import Dashboard from '../views/dashboard/Dashboard'
 
 const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" exact element={<Welcome />} />
-                <Route path="/warehouse" exact element={<Warehouse />} />
+                <Route path='/dashboard' exact element={<Dashboard />}>
+                    <Route path="warehouse" element={<Warehouse />}>
+                        <Route path=':warehouseId' element={<Warehouse />} />
+                    </Route>
+                </Route>
                 {/* <Route path="/phonebook" element={<PhonebookMain />} />
               <Route path="/phonebook/team/:userID" element={<TeamView />} />
               <Route path="/login" element={<LoginForm />} /> */}

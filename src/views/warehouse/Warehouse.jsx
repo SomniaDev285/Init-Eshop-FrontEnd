@@ -1,14 +1,17 @@
 import React from 'react'
-import { AppSidebar } from '../../components'
+import { AppSidebar, AppWarehouse } from '../../components'
 import { sidebarData } from '../../mock'
+import { useParams } from 'react-router-dom';
 // import { useTranslation } from 'react-i18next'
 
 const Warehouse = () => {
   // const { t } = useTranslation()
+  let { warehouseId } = useParams();
+  console.log(warehouseId)
   return (
     <>
-      <AppSidebar sidebarData={sidebarData} />
-      <div className="p-4 sm:ml-64">
+      <AppWarehouse warehouseId={warehouseId} />
+      {/* <div className="p-4 sm:ml-64">
         <div className="p-4 border-2 border-slate-300 border-dashed rounded-lg dark:border-gray-700">
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="flex items-center justify-center h-24 rounded bg-gray-200 dark:bg-gray-800">
@@ -30,7 +33,7 @@ const Warehouse = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
