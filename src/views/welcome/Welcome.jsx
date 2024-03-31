@@ -15,24 +15,24 @@ const Welcome = () => {
     secondLine: t('welcome.companySecondLine'),
     label: t('welcome.CompanyName'),
   })
-  const ref = useRef(null)
+  const nextButtonRef = useRef(null)
 
   useEffect(() => {
     const lng = navigator.language
     i18n.changeLanguage(lng)
-  }, [])
+  }, [i18n])
   useEffect(() => {
     if (companyName.length > 0 && stepper === 'company') {
-      ref.current.style = 'opacity: 1; cursor: pointer'
+      nextButtonRef.current.style = 'opacity: 1; cursor: pointer'
     } else {
-      ref.current.style = 'opacity: 0.5; cursor: default'
+      nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
     }
   }, [companyName, setCompanyName])
   useEffect(() => {
     if (warehouseName.length > 0 && stepper === 'warehouse') {
-      ref.current.style = 'opacity: 1; cursor: pointer'
+      nextButtonRef.current.style = 'opacity: 1; cursor: pointer'
     } else {
-      ref.current.style = 'opacity: 0.5; cursor: default'
+      nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
     }
   }, [warehouseName, setWarehouseName])
 
@@ -45,7 +45,7 @@ const Welcome = () => {
     if (companyName.length > 0 && stepper === 'company') {
       setStepper('warehouse')
       if (warehouseName.length === 0) {
-        ref.current.style = 'opacity: 0.5; cursor: default'
+        nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
       }
       setWelcomeTopic({
         firstLine: t('welcome.warehouseFirstLine'),
@@ -111,13 +111,13 @@ const Welcome = () => {
           <div
             className="absolute right-7 bottom-7 opacity-50"
             onClick={handleNextWelcoming}
-            ref={ref}
+            ref={nextButtonRef}
           >
-            <img src={welcomeNext}></img>
+            <img src={welcomeNext} alt="next icon"></img>
           </div>
         ) : (
           <div className="absolute right-7 bottom-7 w-48">
-            <Link to="/warehouse">
+            <Link to="/dashboard">
               <AppButton label={t('welcome.finish')} />
             </Link>
           </div>
@@ -127,7 +127,7 @@ const Welcome = () => {
             className="absolute left-7 bottom-7 cursor-pointer rotate-180"
             onClick={handleBackWelcoming}
           >
-            <img src={welcomeNext}></img>
+            <img src={welcomeNext} alt="back icon"></img>
           </div>
         )}
       </div>

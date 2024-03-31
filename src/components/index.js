@@ -1,9 +1,6 @@
-import AppButton from './appButton/AppButton'
-import AppInput from './appInput/AppInput'
-import AppSidebar from './appSidebar/AppSidebar'
-import AppWarehouse from './appWarehouse/AppWarehouse'
+import AppButton from './AppButton/AppButton'
+import AppInput from './AppInput/AppInput'
+import AppSidebar from './AppSidebar/AppSidebar'
+import AppWarehouse from './AppWarehouse/AppWarehouse'
 
-export { AppButton }
-export { AppInput }
-export { AppSidebar }
-export { AppWarehouse }
+export { AppButton, AppInput, AppSidebar, AppWarehouse }
