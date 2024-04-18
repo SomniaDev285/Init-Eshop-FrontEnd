@@ -38,3 +38,13 @@
     transform: rotate(360deg);
   }
 }
+
+.img-white {
+  filter: invert(100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:img-white {
+    filter: invert(100%);
+  }
+}
