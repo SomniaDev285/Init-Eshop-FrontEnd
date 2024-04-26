@@ -3,6 +3,7 @@ import { signIn } from '../../assets/svg'
 import HiveButton from '../HiveButton/HiveButton'
 import HiveFormInput from '../HiveFormInput/HiveFormInput'
 import HiveDropdown from '../HiveDropdown/HiveDropdown'
+import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 
 const HiveWarehouse = ({ warehouseId }) => {
   return (
@@ -21,6 +22,7 @@ const HiveWarehouse = ({ warehouseId }) => {
         value={'option2'}
         onSelectionChange={(e) => console.log(e)}
       />
+      <HiveDatagrid />
     </div>
   )
 }
