@@ -22,7 +22,9 @@ const HiveWarehouse = ({ warehouseId }) => {
         value={'option2'}
         onSelectionChange={(e) => console.log(e)}
       />
-      <HiveDatagrid />
+      <div className="p-4">
+        <HiveDatagrid />
+      </div>
     </div>
   )
 }
