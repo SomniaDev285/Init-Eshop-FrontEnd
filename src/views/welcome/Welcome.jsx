@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Welcome.css'
-import { AppButton, AppInput } from '../../components'
+import { HiveButton, HiveInput } from '../../components'
 import { welcomeNext } from '../../assets/svg'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -91,7 +91,7 @@ const Welcome = () => {
         )}
         {stepper === 'company' && (
           <div className="p-4 w-96">
-            <AppInput
+            <HiveInput
               label={welcomeTopic.label}
               value={companyName}
               onChangeValue={(e) => setCompanyName(e)}
@@ -100,7 +100,7 @@ const Welcome = () => {
         )}
         {stepper === 'warehouse' && (
           <div className="p-4 mt-5 w-96">
-            <AppInput
+            <HiveInput
               label={welcomeTopic.label}
               value={warehouseName}
               onChangeValue={(e) => setWarehouseName(e)}
@@ -118,7 +118,7 @@ const Welcome = () => {
         ) : (
           <div className="absolute right-7 bottom-7 w-48">
             <Link to="/dashboard">
-              <AppButton label={t('welcome.finish')} />
+              <HiveButton label={t('welcome.finish')} />
             </Link>
           </div>
         )}

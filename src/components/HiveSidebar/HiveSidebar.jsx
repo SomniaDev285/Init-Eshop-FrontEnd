@@ -71,7 +71,7 @@ const SidebarItem = ({ item }) => {
   )
 }
 
-const AppSidebar = ({ sidebarData }) => {
+const HiveSidebar = ({ sidebarData }) => {
   let isMobile = null
   const toggleSideBarRef = useRef(null)
   const outsideRef = useRef(null)
@@ -135,4 +135,4 @@ const AppSidebar = ({ sidebarData }) => {
   )
 }
 
-export default AppSidebar
+export default HiveSidebar
