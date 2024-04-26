@@ -7,7 +7,7 @@ import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 
 const HiveWarehouse = ({ warehouseId }) => {
   return (
-    <div className="container">
+    <div>
       <h1>AppWarehouse {warehouseId}</h1>
       {/* <HiveButton type={'button'} label={'test'} btnIcon={signIn} /> */}
       <div className="grid grid-flow-row-dense grid-cols-12 gap-4">
