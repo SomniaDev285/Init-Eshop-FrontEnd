@@ -49,7 +49,7 @@ const HiveDatagrid = () => {
   //   }
 
   return (
-    <div className="ag-theme-alpine" style={{ height: 400, width: 600 }}>
+    <div className="ag-theme-alpine h-full w-full" style={{ height: 400 }}>
       <AgGridReact
         columnDefs={columnDefs}
         rowData={rowData}

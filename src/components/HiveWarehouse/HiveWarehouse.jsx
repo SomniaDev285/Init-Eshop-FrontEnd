@@ -7,24 +7,30 @@ import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 
 const HiveWarehouse = ({ warehouseId }) => {
   return (
-    <div>
+    <div className="container">
       <h1>AppWarehouse {warehouseId}</h1>
       {/* <HiveButton type={'button'} label={'test'} btnIcon={signIn} /> */}
-      <HiveFormInput
-        type={'text'}
-        label={'Test Input'}
-        description={'Descript'}
-        value={'text'}
-        onChange={(e) => console.log(e)}
-      />
-      <HiveDropdown
-        label={'Test Dropdown'}
-        value={'option2'}
-        onSelectionChange={(e) => console.log(e)}
-      />
-      <div className="p-4">
-        <HiveDatagrid />
+      <div className="grid grid-flow-row-dense grid-cols-12 gap-4">
+        <div className="col-span-2">
+          <HiveFormInput
+            type={'text'}
+            label={'Test Input'}
+            description={'Descript'}
+            value={'text'}
+            onChange={(e) => console.log(e)}
+          />
+        </div>
+        <div className="col-span-2">
+          <HiveDropdown
+            label={'Test Dropdown'}
+            value={'option2'}
+            onSelectionChange={(e) => console.log(e)}
+          />
+        </div>
       </div>
+      {/* <div className="col-span-6"> */}
+      <HiveDatagrid />
+      {/* </div> */}
     </div>
   )
 }
