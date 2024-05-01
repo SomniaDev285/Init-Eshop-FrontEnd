@@ -14,7 +14,7 @@ function HiveDropdown({ value, label, onSelectionChange }) {
 
   return (
     <div className="flex flex-col">
-      <label htmlFor="simple-dropdown">
+      <label className='text-sm' htmlFor="simple-dropdown">
         {label ? label : 'Dropdown Label'}
       </label>
       <select

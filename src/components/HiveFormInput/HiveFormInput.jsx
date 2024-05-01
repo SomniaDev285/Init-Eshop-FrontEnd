@@ -23,7 +23,7 @@ function HiveFormInput({
   return (
     <>
       <div className="flex flex-col">
-        <label htmlFor="form-input">{label ? label : 'Input Label'}</label>
+        <label className='text-sm' htmlFor="form-input">{label ? label : 'Input Label'}</label>
         <input
           id="form-input"
           value={val}
@@ -34,7 +34,7 @@ function HiveFormInput({
           onChange={changeVal}
         />
         {description && (
-          <span className="text-sm italic text-gray-500">{description}</span>
+          <span className="text-xs italic text-gray-500">{description}</span>
         )}
       </div>
     </>
