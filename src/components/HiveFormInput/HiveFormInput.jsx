@@ -8,6 +8,7 @@ function HiveFormInput({
   description,
   onChange,
   value,
+  className
 }) {
   const [val, setVal] = useState('')
 
@@ -22,7 +23,7 @@ function HiveFormInput({
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className={`flex flex-col ${className}`}>
         <label className='text-sm' htmlFor="form-input">{label ? label : 'Input Label'}</label>
         <input
           id="form-input"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function HiveDropdown({ value, label, onSelectionChange }) {
+function HiveDropdown({ value, label, onSelectionChange, className }) {
   const [selectedValue, setSelectedValue] = useState('')
 
   const handleChange = (e) => {
@@ -13,7 +13,7 @@ function HiveDropdown({ value, label, onSelectionChange }) {
   }, [value])
 
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col ${className}`}>
       <label className='text-sm' htmlFor="simple-dropdown">
         {label ? label : 'Dropdown Label'}
       </label>

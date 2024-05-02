@@ -9,7 +9,7 @@ const Dashboard = () => {
       <div>
         <HiveSidebar sidebarData={sidebarData} />
       </div>
-      <div className="p-4">
+      <div className="p-4 container">
         <Outlet />
       </div>
     </div>
