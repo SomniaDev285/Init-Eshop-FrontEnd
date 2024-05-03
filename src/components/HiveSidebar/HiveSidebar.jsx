@@ -1,20 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { barIcon, welcomeNext } from '../../assets/svg'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const SidebarItem = ({ item }) => {
+  const location = useLocation();
+  // const isActive = item.link === location.pathname;
+  const isActive = item.link === location.pathname || (item.children && item.children.some(child => child.link === location.pathname));
   const [isOpen, setIsOpen] = useState(false)
   const handleToggle = () => setIsOpen(!isOpen)
-  const ref = useRef(null)
+  const extendRef = useRef(null)
   useEffect(() => {
     if (item.children.length === 0) {
       return
     } else if (isOpen && item.children.length > 0) {
-      ref.current.style = 'rotate: 90deg'
+      extendRef.current.style = 'rotate: 90deg'
     } else {
-      ref.current.style = 'rotate: 0deg'
+      extendRef.current.style = 'rotate: 0deg'
     }
   }, [isOpen, setIsOpen])
+  useEffect(() => {
+    console.log('----------', item)
+    if (isActive) {
+      setIsOpen(true)
+    }
+  }, [])
   return (
     <>
       <li key={item.id}>
@@ -22,7 +31,7 @@ const SidebarItem = ({ item }) => {
           <button
             onClick={handleToggle}
             type="button"
-            className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            className={`flex items-center w-full p-2 text-base transition duration-75 rounded-lg group text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700`}
             aria-controls="dropdown-example"
             data-collapse-toggle="dropdown-example"
           >
@@ -35,7 +44,7 @@ const SidebarItem = ({ item }) => {
               </span>
             )}
             <img
-              ref={ref}
+              ref={extendRef}
               src={welcomeNext}
               alt=""
               className="w-6 h-6 dark:img-white"
@@ -50,10 +59,10 @@ const SidebarItem = ({ item }) => {
           </ul>
         )}
         {item.children.length === 0 && (
-          <li>
+          <li key={item.id}>
             <Link
               to={item.link}
-              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              className={`flex items-center p-2 rounded-lg group text-gray-900 dark:text-white ${isActive ? 'bg-gray-300 dark:bg-gray-600' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
             >
               <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
                 {item.name}
@@ -68,8 +77,8 @@ const SidebarItem = ({ item }) => {
         )}
       </li>
     </>
-  )
-}
+  );
+};
 
 const HiveSidebar = ({ sidebarData }) => {
   let isMobile = null

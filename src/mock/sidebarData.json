@@ -5,6 +5,7 @@
     "iconName": "",
     "tag": "Pro",
     "link": "/",
+    "parent": "",
     "children": []
   },
   {
@@ -13,6 +14,7 @@
     "iconName": "inventoryIcon",
     "tag": "",
     "link": "/",
+    "parent": "",
     "children": [
       {
         "id": 3,
@@ -20,6 +22,7 @@
         "iconName": "productsIcon",
         "tag": "",
         "link": "/dashboard/warehouse/1",
+        "parent": "Warehouses",
         "children": []
       },
       {
@@ -28,6 +31,7 @@
         "iconName": "",
         "tag": "",
         "link": "/dashboard/warehouse/2",
+        "parent": "Warehouses",
         "children": []
       }
     ]
@@ -38,6 +42,7 @@
     "iconName": "settingsIcon",
     "tag": "",
     "link": "/",
+    "parent": "",
     "children": []
   }
 ]
