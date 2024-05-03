@@ -9,6 +9,7 @@ const SidebarItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false)
   const handleToggle = () => setIsOpen(!isOpen)
   const extendRef = useRef(null)
+
   useEffect(() => {
     if (item.children.length === 0) {
       return
@@ -18,8 +19,8 @@ const SidebarItem = ({ item }) => {
       extendRef.current.style = 'rotate: 0deg'
     }
   }, [isOpen, setIsOpen])
+
   useEffect(() => {
-    console.log('----------', item)
     if (isActive) {
       setIsOpen(true)
     }
