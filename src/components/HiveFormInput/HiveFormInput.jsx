@@ -23,17 +23,19 @@ function HiveFormInput({
 
   return (
     <>
-      <div className={`flex flex-col ${className}`}>
+      <div className={`${className}`}>
         <label className='text-sm' htmlFor="form-input">{label ? label : 'Input Label'}</label>
-        <input
-          id="form-input"
-          value={val}
-          name={name}
-          type={type ? type : 'text'}
-          placeholder={placeholder ? placeholder : 'Input'}
-          className="border border-gray-500 rounded-md p-1"
-          onChange={changeVal}
-        />
+        <div className="flex flex-col">
+          <input
+            id="form-input"
+            value={val}
+            name={name}
+            type={type ? type : 'text'}
+            placeholder={placeholder ? placeholder : 'Input'}
+            className="border border-gray-500 rounded-md p-2"
+            onChange={changeVal}
+          />
+        </div>
         {description && (
           <span className="text-xs italic text-gray-500">{description}</span>
         )}

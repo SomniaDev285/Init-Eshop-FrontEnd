@@ -5,5 +5,6 @@ import HiveWarehouse from './HiveWarehouse/HiveWarehouse.jsx'
 import HiveDropdown from './HiveDropdown/HiveDropdown.jsx'
 import HiveFormInput from './HiveFormInput/HiveFormInput.jsx'
 import HiveDatagrid from './HiveDatagrid/HiveDatagrid.jsx'
+import HiveCombobox from './HiveCombobox/HiveCombobox.jsx'
 
-export { HiveButton, HiveSidebar, HiveWarehouse, HiveInput, HiveDropdown, HiveFormInput, HiveDatagrid }
+export { HiveButton, HiveSidebar, HiveWarehouse, HiveInput, HiveDropdown, HiveFormInput, HiveDatagrid, HiveCombobox }

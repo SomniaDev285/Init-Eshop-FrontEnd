@@ -1,14 +1,13 @@
 import React from 'react'
-import { signIn } from '../../assets/svg'
-import HiveButton from '../HiveButton/HiveButton'
 import HiveFormInput from '../HiveFormInput/HiveFormInput'
-import HiveDropdown from '../HiveDropdown/HiveDropdown'
 import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
+import HiveCombobox from '../HiveCombobox/HiveCombobox'
 
 const AddCompany = () => {
   return (
     <>
-      <HiveDropdown className='col-span-4' />
+      <HiveCombobox className='col-span-4' label={'Company'} value={'Cherry'}
+        onSelectionChange={(e) => console.log(e)} />
       <HiveFormInput className='col-span-4' type='number' label='Phone Number' />
     </>
   )
@@ -49,6 +48,7 @@ const HiveWarehouse = ({ warehouseId }) => {
       <div className="grid grid-cols-12 gap-4 card">
         <AddCompany />
       </div>
+      <HiveDatagrid />
     </>
   )
 }
