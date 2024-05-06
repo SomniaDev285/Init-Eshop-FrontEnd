@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function HiveCombobox({ label, value, onSelectionChange, className }) {
-    // Options for the combobox
-    const options = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape"];
-
+function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKey, valueKey, dispLabelList }) {
     // State to keep track of the current input and selected option
     const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState(value);
@@ -13,13 +10,13 @@ function HiveCombobox({ label, value, onSelectionChange, className }) {
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
         setShowDropdown(true);
-        onSelectionChange(event.target.value)
+        // onSelectionChange(event.target.value)
     };
 
     // Handle option selection
     const handleSelectOption = (option) => {
-        setSelectedOption(option);
-        setInputValue(option);
+        setSelectedOption(option[valueKey]);
+        setInputValue(option[labelKey]);
         setShowDropdown(false);
         onSelectionChange(option);
     };
@@ -54,13 +51,13 @@ function HiveCombobox({ label, value, onSelectionChange, className }) {
             </div>
             {showDropdown && (
                 <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white border border-gray-200 rounded-md shadow-lg max-h-60 focus:outline-none sm:text-sm">
-                    {options.filter((item) => item.toLowerCase().includes(inputValue.toLowerCase())).map((option) => (
+                    {offlineData.filter((item) => item[labelKey].toLowerCase().includes(inputValue.toLowerCase())).map((option) => (
                         <li
-                            key={option}
+                            key={option[valueKey]}
                             onClick={() => handleSelectOption(option)}
                             className="py-2 px-4 cursor-pointer hover:bg-blue-500 hover:text-white"
                         >
-                            {option}
+                            {dispLabelList.length <= 1} ? {option[labelKey]} : {option[dispLabelList[0]]} '-' {option[dispLabelList[1]]}
                         </li>
                     ))}
                 </ul>
