@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
     // State to keep track of the current input and selected option
     const [inputValue, setInputValue] = useState('');
-    const [selectedOption, setSelectedOption] = useState(value);
+    const [selectedOption, setSelectedOption] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
 
     // Handle input change
@@ -37,8 +37,9 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
     }, [labelKeyList])
 
     useEffect(() => {
-        setSelectedOption(value);
-        setInputValue(value);
+        const initialLabel = offlineData.find(option => option[valueKey] === value)?.dispLabel || '';
+        setSelectedOption(initialLabel);
+        setInputValue(initialLabel);
     }, [value])
 
     return (

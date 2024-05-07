@@ -24,7 +24,7 @@ const AddCompany = () => {
   ];
   return (
     <>
-      <HiveCombobox className='col-span-4' label={'Company'} value={'Cherry'}
+      <HiveCombobox className='col-span-4' label={'Company'} value={'1011'}
         onSelectionChange={(e) => console.log(e)} offlineData={options} labelKeyList={['label', 'value']} valueKey={"value"} />
       <HiveFormInput className='col-span-4' type='number' label='Phone Number' />
     </>
