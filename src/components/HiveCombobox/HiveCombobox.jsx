@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKey, valueKey, dispLabelList }) {
+function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
     // State to keep track of the current input and selected option
     const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState(value);
@@ -8,6 +8,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
 
     // Handle input change
     const handleInputChange = (event) => {
+        console.log(event)
         setInputValue(event.target.value);
         setShowDropdown(true);
         // onSelectionChange(event.target.value)
@@ -16,10 +17,25 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
     // Handle option selection
     const handleSelectOption = (option) => {
         setSelectedOption(option[valueKey]);
-        setInputValue(option[labelKey]);
+        setInputValue(option.dispLabel);
         setShowDropdown(false);
         onSelectionChange(option);
     };
+
+    useEffect(() => {
+        if (labelKeyList.length > 1) {
+            offlineData.map((option) => {
+                option.dispLabel = ''
+                labelKeyList.map((label) => {
+                    option.dispLabel = option.dispLabel.length > 0 ? option.dispLabel + ' - ' + option[label] : option[label]
+                })
+            })
+        } else {
+            offlineData.map((option) => {
+                option.dispLabel = option[labelKeyList[0]]
+            })
+        }
+    }, [labelKeyList])
 
     useEffect(() => {
         setSelectedOption(value);
@@ -51,15 +67,21 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
             </div>
             {showDropdown && (
                 <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white border border-gray-200 rounded-md shadow-lg max-h-60 focus:outline-none sm:text-sm">
-                    {offlineData.filter((item) => item[labelKey].toLowerCase().includes(inputValue.toLowerCase())).map((option) => (
+                    {offlineData.filter(item => {
+                        // Convert item to array of its string property values and check each one
+                        return Object.values(item).some(value =>
+                            typeof value === 'string' && value.toLowerCase().includes(inputValue.toLowerCase())
+                        )
+                    }).map((option) => (
                         <li
                             key={option[valueKey]}
                             onClick={() => handleSelectOption(option)}
                             className="py-2 px-4 cursor-pointer hover:bg-blue-500 hover:text-white"
                         >
-                            {dispLabelList.length <= 1} ? {option[labelKey]} : {option[dispLabelList[0]]} '-' {option[dispLabelList[1]]}
+                            {option.dispLabel}
                         </li>
-                    ))}
+                    ))
+                    }
                 </ul>
             )}
         </div>
