@@ -8,7 +8,6 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
 
     // Handle input change
     const handleInputChange = (event) => {
-        console.log(event)
         setInputValue(event.target.value);
         setShowDropdown(true);
         // onSelectionChange(event.target.value)
