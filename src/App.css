@@ -55,3 +55,11 @@
   padding: 1rem;
   margin: 0.8rem 0;
 }
+
+.filter-green {
+  filter: invert(48%) sepia(98%) saturate(3650%) hue-rotate(130deg) brightness(101%) contrast(103%);
+}
+
+.filter-dark-blue {
+  filter: invert(17%) sepia(50%) saturate(2800%) hue-rotate(200deg) brightness(90%) contrast(70%);
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { plusCircle } from '../../assets/svg';
 
 function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
     // State to keep track of the current input and selected option
@@ -20,6 +21,12 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
         setShowDropdown(false);
         onSelectionChange(option);
     };
+
+    // Handle remove option selection
+    const removeSelectedOption = () => {
+        setInputValue('')
+        setSelectedOption(null)
+    }
 
     useEffect(() => {
         if (labelKeyList.length > 1) {
@@ -55,6 +62,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                     onClick={() => setShowDropdown(true)}
                     onBlur={() => setTimeout(() => setShowDropdown(false), 100)}
                 />
+                {inputValue.length > 0 && <img src={plusCircle} className="w-6 h-6 rotate-45 filter-dark-blue cursor-pointer" alt="cross cricle icon" onClick={() => removeSelectedOption()}></img>}
                 <svg
                     onClick={() => setShowDropdown(!showDropdown)}
                     viewBox="0 0 20 20"
