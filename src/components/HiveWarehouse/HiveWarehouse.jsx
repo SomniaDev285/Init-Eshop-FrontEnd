@@ -60,7 +60,6 @@ const HiveWarehouse = ({ warehouseId }) => {
   ];
 
   const warehouse = warehouses.find(warehouse => warehouse.warehouseId === Number(warehouseId))
-  console.log('==........', warehouse)
   return (
     // <div>
     //   <h1>AppWarehouse {warehouseId}</h1>
