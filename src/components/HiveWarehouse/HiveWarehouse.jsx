@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HiveFormInput from '../HiveFormInput/HiveFormInput'
 import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 import HiveCombobox from '../HiveCombobox/HiveCombobox'
 
-const AddCompany = () => {
+const AddCompany = ({ warehouse }) => {
   const options = [
     {
       label: 'Cherry',
@@ -24,7 +24,7 @@ const AddCompany = () => {
   ];
   return (
     <>
-      <HiveCombobox className='col-span-4' label={'Company'} value={'1011'}
+      <HiveCombobox className='col-span-4' label={'Company'} value={warehouse.companies[0].companyId}
         onSelectionChange={(e) => console.log(e)} offlineData={options} labelKeyList={['label', 'value']} valueKey={"value"} />
       <HiveFormInput className='col-span-4' type='number' label='Phone Number' />
     </>
@@ -32,6 +32,35 @@ const AddCompany = () => {
 }
 
 const HiveWarehouse = ({ warehouseId }) => {
+  const warehouses = [
+    {
+      warehouseId: 1,
+      warehouseName: 'Main Warehouse',
+      warehouseAddress: '',
+      companies: [
+        {
+          companyId: '1011',
+          companyName: 'Cherry',
+          phoneNumber: '09380309950'
+        }
+      ]
+    },
+    {
+      warehouseId: 2,
+      warehouseName: 'Secondary Warehouse',
+      warehouseAddress: 'Tehran, Tarasht',
+      companies: [
+        {
+          companyId: '1012',
+          companyName: 'Apple',
+          phoneNumber: '09215942682'
+        }
+      ]
+    }
+  ];
+
+  const warehouse = warehouses.find(warehouse => warehouse.warehouseId === Number(warehouseId))
+  console.log('==........', warehouse)
   return (
     // <div>
     //   <h1>AppWarehouse {warehouseId}</h1>
@@ -60,11 +89,11 @@ const HiveWarehouse = ({ warehouseId }) => {
     // </div>
     <>
       <div className='grid grid-cols-12 gap-4'>
-        <HiveFormInput className='col-span-4' label={'Name'} placeholder={'Add your warehouse name'} />
+        <HiveFormInput className='col-span-4' value={warehouse.warehouseName} label={'Name'} placeholder={'Add your warehouse name'} />
         <HiveFormInput className='col-span-8' label={'Address'} placeholder={'Add your warehouse address'} />
       </div>
       <div className="grid grid-cols-12 gap-4 card">
-        <AddCompany />
+        <AddCompany warehouse={warehouse} />
       </div>
       <HiveDatagrid />
     </>
