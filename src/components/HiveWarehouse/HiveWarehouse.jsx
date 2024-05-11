@@ -4,6 +4,8 @@ import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 import HiveCombobox from '../HiveCombobox/HiveCombobox'
 import comboboxData from '../../mock/comboboxData.json'
 import warehouses from '../../mock/warehouses.json'
+import aggridConfig from './aggridConfig.json'
+import { aggridData } from '../../mock'
 
 const AddCompany = ({ warehouse }) => {
   return (
@@ -51,7 +53,7 @@ const HiveWarehouse = ({ warehouseId }) => {
       <div className="grid grid-cols-12 gap-4 card">
         <AddCompany warehouse={warehouse} />
       </div>
-      <HiveDatagrid />
+      <HiveDatagrid aggridConfig={aggridConfig.aggridColumnDef} rowData={aggridData} />
     </>
   )
 }

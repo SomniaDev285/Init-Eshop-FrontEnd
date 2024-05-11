@@ -1,0 +1,47 @@
+
+{
+"aggridColumnDef":[
+    {
+        "field":"product_name",
+        "headerName":"Product Name",
+        "resizable":true,
+        "width":200,
+        "hide":false,
+        "sortable":true,
+        "filter":"agTextColumnFilter"
+    },
+    {
+        "field":"part_number",
+        "headerName":"Part Number",
+        "resizable":false,
+        "width":200,
+        "hide":false,
+        "filter":"agTextColumnFilter"
+    },
+    {
+        "field":"price",
+        "headerName":"Price",
+        "resizable":false,
+        "width":200,
+        "hide":false,
+        "filter":"agNumberColumnFilter"
+    },
+    {
+        "field":"quantity",
+        "headerName":"Quantity",
+        "resizable":false,
+        "width":200,
+        "hide":false,
+        "filter":"agTextColumnFilter"
+    },
+    {
+        "field":"production_date",
+        "headerName":"Production Date",
+        "resizable":false,
+        "width":200,
+        "hide":false,
+        "filter":"agDateColumnFilter",
+        "cellEditor":"agDateCellEditor"
+    }
+]
+}
