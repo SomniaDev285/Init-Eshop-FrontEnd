@@ -10,6 +10,7 @@ const Router = () => {
             <Routes>
                 <Route path="/" exact element={<Welcome />} />
                 <Route path='/dashboard' exact element={<Dashboard />}>
+                    <Route index element={<p>Welcome to the Admin Panel Dashboard</p>} />
                     <Route path="warehouse" element={<Warehouse />}>
                         <Route path=':warehouseId' element={<Warehouse />} />
                     </Route>

@@ -1,0 +1,26 @@
+[
+    {
+      "warehouseId": 1,
+      "warehouseName": "Main Warehouse",
+      "warehouseAddress": "",
+      "companies": [
+        {
+          "companyId": 97,
+          "companyName": "Jone",
+          "phoneNumber": "09380309950"
+        }
+      ]
+    },
+    {
+      "warehouseId": 2,
+      "warehouseName": "Secondary Warehouse",
+      "warehouseAddress": "",
+      "companies": [
+        {
+          "companyId": 98,
+          "companyName": "Cherry",
+          "phoneNumber": "09380309950"
+        }
+      ]
+    }
+  ]

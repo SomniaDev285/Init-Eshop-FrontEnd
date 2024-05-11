@@ -12,9 +12,6 @@ const Dashboard = () => {
       <div className="p-4 container">
         <Outlet />
       </div>
-      <div className='bg-slate-500'>
-        <h1>Welcome to the Admin Panel Dashboard</h1>
-      </div>
     </div>
   )
 }

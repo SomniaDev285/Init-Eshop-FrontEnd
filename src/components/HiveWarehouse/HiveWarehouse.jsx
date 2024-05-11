@@ -2,63 +2,20 @@ import React, { useEffect } from 'react'
 import HiveFormInput from '../HiveFormInput/HiveFormInput'
 import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 import HiveCombobox from '../HiveCombobox/HiveCombobox'
+import comboboxData from '../../mock/comboboxData.json'
+import warehouses from '../../mock/warehouses.json'
 
 const AddCompany = ({ warehouse }) => {
-  const options = [
-    {
-      label: 'Cherry',
-      value: '1011'
-    },
-    {
-      label: 'Apple',
-      value: '1012'
-    },
-    {
-      label: 'Banana',
-      value: '1013'
-    },
-    {
-      label: 'Grip',
-      value: '1014'
-    },
-  ];
   return (
     <>
       <HiveCombobox className='col-span-4' label={'Company'} value={warehouse.companies[0].companyId}
-        onSelectionChange={(e) => console.log(e)} offlineData={options} labelKeyList={['label', 'value']} valueKey={"value"} />
+        onSelectionChange={(e) => console.log(e)} offlineData={comboboxData} labelKeyList={['first_name', 'last_name']} valueKey={"id"} />
       <HiveFormInput className='col-span-4' type='number' label='Phone Number' />
     </>
   )
 }
 
 const HiveWarehouse = ({ warehouseId }) => {
-  const warehouses = [
-    {
-      warehouseId: 1,
-      warehouseName: 'Main Warehouse',
-      warehouseAddress: '',
-      companies: [
-        {
-          companyId: '1011',
-          companyName: 'Cherry',
-          phoneNumber: '09380309950'
-        }
-      ]
-    },
-    {
-      warehouseId: 2,
-      warehouseName: 'Secondary Warehouse',
-      warehouseAddress: 'Tehran, Tarasht',
-      companies: [
-        {
-          companyId: '1012',
-          companyName: 'Apple',
-          phoneNumber: '09215942682'
-        }
-      ]
-    }
-  ];
-
   const warehouse = warehouses.find(warehouse => warehouse.warehouseId === Number(warehouseId))
   return (
     // <div>
