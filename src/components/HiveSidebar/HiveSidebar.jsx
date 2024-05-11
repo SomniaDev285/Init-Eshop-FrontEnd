@@ -82,7 +82,7 @@ const SidebarItem = ({ item }) => {
 };
 
 const HiveSidebar = ({ sidebarData }) => {
-  let isMobile = null
+  const isMobile = useRef(null)
   const toggleSideBarRef = useRef(null)
   const outsideRef = useRef(null)
   const toggleSideBar = () => {
@@ -91,11 +91,7 @@ const HiveSidebar = ({ sidebarData }) => {
   }
 
   useEffect(() => {
-    isMobile =
-      window.getComputedStyle(outsideRef.current.querySelector('.toggleBtn'))
-        .display !== 'none'
-        ? true
-        : false
+    isMobile.current = window.getComputedStyle(outsideRef.current.querySelector('.toggleBtn')).display !== 'none';
     document.addEventListener('mousedown', handleOutsideClick)
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick)
@@ -106,7 +102,7 @@ const HiveSidebar = ({ sidebarData }) => {
     if (
       outsideRef.current &&
       !outsideRef.current.contains(e.target) &&
-      isMobile
+      isMobile.current
     ) {
       toggleSideBarRef.current.style =
         'transform: translate(-100%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))'
