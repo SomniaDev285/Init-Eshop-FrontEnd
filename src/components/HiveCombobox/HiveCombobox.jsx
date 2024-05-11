@@ -14,7 +14,6 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
         setShowDropdown(true);
-        // onSelectionChange(event.target.value)
     };
 
     // Handle option selection
@@ -23,8 +22,11 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
         setInputValue(option.dispLabel);
         setShowDropdown(false);
         onSelectionChange(option);
-        console.log('Selected Option: ', selectedOption)
     };
+
+    useEffect(() => {
+        console.log('Selected Option has been updated: ', selectedOption);
+    }, [selectedOption]);
 
     // Handle remove option selection
     const removeSelectedOption = () => {
