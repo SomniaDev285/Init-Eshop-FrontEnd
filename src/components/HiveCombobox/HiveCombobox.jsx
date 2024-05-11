@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { cross, plusCircle } from '../../assets/svg';
 
 function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
     // State to keep track of the current input and selected option
-    const [inputValue, setInputValue] = useState('');
-    const [selectedOption, setSelectedOption] = useState(null);
+    const initialLabel = useMemo(() => {
+        return offlineData.find(option => option[valueKey] === value)?.dispLabel || '';
+    }, [offlineData, value, valueKey])
+    const [inputValue, setInputValue] = useState(initialLabel);
+    const [selectedOption, setSelectedOption] = useState(initialLabel);
     const [showDropdown, setShowDropdown] = useState(false);
 
     // Handle input change
@@ -30,24 +33,22 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
 
     useEffect(() => {
         if (labelKeyList.length > 1) {
-            offlineData.map((option) => {
-                option.dispLabel = ''
-                labelKeyList.map((label) => {
-                    option.dispLabel = option.dispLabel.length > 0 ? option.dispLabel + ' - ' + option[label] : option[label]
-                })
-            })
+            offlineData.forEach(option => {
+                option.dispLabel = '';
+                labelKeyList.forEach((label, index) => {
+                    if (index > 0) {
+                        option.dispLabel += ' - ';
+                    }
+                    option.dispLabel += option[label];
+                });
+            });
+
         } else {
-            offlineData.map((option) => {
+            offlineData.forEach((option) => {
                 option.dispLabel = option[labelKeyList[0]]
             })
         }
     }, [labelKeyList])
-
-    useEffect(() => {
-        const initialLabel = offlineData.find(option => option[valueKey] === value)?.dispLabel || '';
-        setSelectedOption(initialLabel);
-        setInputValue(initialLabel);
-    }, [value])
 
     return (
         <div className={`relative w-full ${className}`}>

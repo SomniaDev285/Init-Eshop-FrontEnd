@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 
 const Warehouse = () => {
   // const { t } = useTranslation()
-  let { warehouseId } = useParams()
+  const { warehouseId } = useParams()
   return (
     <>
       <HiveWarehouse warehouseId={warehouseId} />
