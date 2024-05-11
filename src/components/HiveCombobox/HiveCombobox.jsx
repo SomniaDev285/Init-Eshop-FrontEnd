@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { cross, plusCircle } from '../../assets/svg';
+import { cross } from '../../assets/svg';
 
 function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
     // State to keep track of the current input and selected option
@@ -7,7 +7,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
         return offlineData.find(option => option[valueKey] === value)?.dispLabel || '';
     }, [offlineData, value, valueKey])
     const [inputValue, setInputValue] = useState(initialLabel);
-    const [selectedOption, setSelectedOption] = useState(initialLabel);
+    const [selectedOption, setSelectedOption] = useState(value);
     const [showDropdown, setShowDropdown] = useState(false);
 
     // Handle input change
@@ -23,6 +23,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
         setInputValue(option.dispLabel);
         setShowDropdown(false);
         onSelectionChange(option);
+        console.log('Selected Option: ', selectedOption)
     };
 
     // Handle remove option selection
@@ -48,7 +49,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                 option.dispLabel = option[labelKeyList[0]]
             })
         }
-    }, [labelKeyList])
+    }, [labelKeyList, offlineData])
 
     return (
         <div className={`relative w-full ${className}`}>
@@ -60,7 +61,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                     onChange={handleInputChange}
                     className="w-full p-1 focus:outline-none"
                     placeholder="Type or select an option"
-                    onClick={() => setShowDropdown(true)}
+                    // onClick={() => setShowDropdown(true)}
                     onBlur={() => setTimeout(() => setShowDropdown(false), 100)}
                 />
                 {inputValue.length > 0 && <img src={cross} className="w-4 h-4 cursor-pointer" alt="cross cricle icon" onClick={() => removeSelectedOption()}></img>}

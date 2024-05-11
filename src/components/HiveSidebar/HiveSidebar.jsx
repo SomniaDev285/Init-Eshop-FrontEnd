@@ -18,13 +18,13 @@ const SidebarItem = ({ item }) => {
     } else {
       extendRef.current.style = 'rotate: 0deg'
     }
-  }, [isOpen, setIsOpen])
+  }, [isOpen, setIsOpen, item.children.length])
 
   useEffect(() => {
     if (isActive) {
       setIsOpen(true)
     }
-  }, [])
+  }, [isActive])
   return (
     <>
       <li key={item.id}>
@@ -96,7 +96,7 @@ const HiveSidebar = ({ sidebarData }) => {
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick)
     }
-  })
+  }, [])
 
   const handleOutsideClick = (e) => {
     if (

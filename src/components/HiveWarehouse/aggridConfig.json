@@ -24,7 +24,8 @@
         "resizable":false,
         "width":200,
         "hide":false,
-        "filter":"agNumberColumnFilter"
+        "filter":"agNumberColumnFilter",
+        "floatingFilter": false
     },
     {
         "field":"quantity",
@@ -32,7 +33,8 @@
         "resizable":false,
         "width":200,
         "hide":false,
-        "filter":"agTextColumnFilter"
+        "filter":"agNumberColumnFilter",
+        "floatingFilter": false
     },
     {
         "field":"production_date",
