@@ -1,12 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { cross } from '../../assets/svg';
 
 function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
-    // State to keep track of the current input and selected option
-    const initialLabel = useMemo(() => {
-        return offlineData.find(option => option[valueKey] === value)?.dispLabel || '';
-    }, [offlineData, value, valueKey])
-    const [inputValue, setInputValue] = useState(initialLabel);
+    const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState(value);
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -52,6 +48,11 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
             })
         }
     }, [labelKeyList, offlineData])
+
+    useEffect(() => {
+        const initialLabel = offlineData.find(option => option[valueKey] === value)?.dispLabel || '';
+        setInputValue(initialLabel)
+    }, [offlineData, value, valueKey])
 
     return (
         <div className={`relative w-full ${className}`}>
