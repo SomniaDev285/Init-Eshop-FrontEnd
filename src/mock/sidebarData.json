@@ -4,7 +4,7 @@
     "name": "Dashboard",
     "iconName": "",
     "tag": "Pro",
-    "link": "/",
+    "link": "/dashboard",
     "parent": "",
     "children": []
   },
@@ -41,7 +41,7 @@
     "name": "Products",
     "iconName": "settingsIcon",
     "tag": "",
-    "link": "/",
+    "link": "/dashboard/products",
     "parent": "",
     "children": []
   }
