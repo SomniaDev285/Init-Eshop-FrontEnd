@@ -5,6 +5,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
     const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState(value);
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isMouseInside, setIsMouseInside] = useState(false);
 
     // Handle input change
     const handleInputChange = (event) => {
@@ -64,8 +65,12 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                     onChange={handleInputChange}
                     className="w-full p-1 focus:outline-none"
                     placeholder="Type or select an option"
-                    // onClick={() => setShowDropdown(true)}
-                    onBlur={() => setTimeout(() => setShowDropdown(false), 100)}
+                    onClick={() => setShowDropdown(true)}
+                    onBlur={() => {
+                        if (!isMouseInside) {
+                            setShowDropdown(false)
+                        }
+                    }}
                 />
                 {inputValue.length > 0 && <img src={cross} className="w-4 h-4 cursor-pointer" alt="cross cricle icon" onClick={() => removeSelectedOption()}></img>}
                 <svg
@@ -79,7 +84,10 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                 </svg>
             </div>
             {showDropdown && (
-                <ul className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white border border-gray-200 rounded-md shadow-lg max-h-60 focus:outline-none sm:text-sm">
+                <ul
+                    onMouseEnter={() => setIsMouseInside(true)}
+                    onMouseLeave={() => setIsMouseInside(false)}
+                    className="absolute z-10 w-full py-1 mt-1 overflow-auto text-base bg-white border border-gray-200 rounded-md shadow-lg max-h-60 focus:outline-none sm:text-sm">
                     {offlineData.filter(item => {
                         // Convert item to array of its string property values and check each one
                         return Object.values(item).some(value =>
