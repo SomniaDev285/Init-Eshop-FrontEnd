@@ -8,5 +8,9 @@
         "CompanyName": "Company Name",
         "WarehouseName": "Warehouse Name",
         "finish": "Finish"
+    },
+    "warehouse": {
+        "createTitle": "Creating New Warehouse",
+        "createWarehouse": "New Warehouse"
     }
 }

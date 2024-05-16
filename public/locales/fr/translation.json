@@ -8,5 +8,8 @@
             "CompanyName": "Nom de l'entreprise",
             "WarehouseName": "Nom de l'entrepôt",
             "finish": "Finition"
-        }
+        },
+        "warehouse": {
+        "createTitle": "Création d'un nouvel entrepôt"
+    }
     }
