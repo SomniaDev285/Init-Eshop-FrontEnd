@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "ag-grid-community": "^31.2.1",
     "ag-grid-react": "^31.2.1",
+    "clsx": "^2.1.1",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",
@@ -16,6 +17,7 @@
     "react-i18next": "^14.1.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
