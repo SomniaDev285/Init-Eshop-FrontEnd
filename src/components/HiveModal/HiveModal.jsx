@@ -37,16 +37,16 @@ const CloseButton = styled.button`
 `;
 
 function HiveModal({ showModal, onClose, modalTitle, children }) {
-    return showModal ? (
-        <ModalBg onClick={onClose} role="dialog" aria-modal="true">
-            <ModalBody onClick={(e) => e.stopPropagation()} className="border border-zinc-950 rounded-md">
-                <CloseButton onClick={onClose} aria-label="Close Modal">&times;</CloseButton>
-                <h1 className='text-xl font-bold'>{modalTitle}</h1>
-                <hr className='my-2'></hr>
-                {children}
-            </ModalBody>
-        </ModalBg>
-    ) : null;
+  return showModal ? (
+    <ModalBg onClick={onClose} role="dialog" aria-modal="true">
+      <ModalBody onClick={(e) => e.stopPropagation()} className="rounded-md">
+        <CloseButton onClick={onClose} aria-label="Close Modal">&times;</CloseButton>
+        <h1 className='text-xl font-bold'>{modalTitle}</h1>
+        <hr className='my-2'></hr>
+        {children}
+      </ModalBody>
+    </ModalBg>
+  ) : null;
 }
 
 // HiveModal.propTypes = {
