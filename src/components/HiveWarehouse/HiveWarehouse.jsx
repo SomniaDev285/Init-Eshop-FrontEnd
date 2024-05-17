@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 import warehouses from '../../mock/warehouses.json'
 import aggridConfig from './aggridConfig.json'

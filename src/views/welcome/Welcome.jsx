@@ -16,11 +16,6 @@ const Welcome = () => {
     label: t('welcome.CompanyName'),
   })
   const nextButtonRef = useRef(null)
-
-  useEffect(() => {
-    const lng = navigator.language
-    i18n.changeLanguage(lng)
-  }, [i18n])
   useEffect(() => {
     if (companyName.length > 0 && stepper === 'company') {
       nextButtonRef.current.style = 'opacity: 1; cursor: pointer'
