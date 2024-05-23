@@ -13,10 +13,10 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      <div className={`${isSidebarVisible ? 'w-1/6' : 'w-0'} transition-width duration-300`}>
+      <div className={`${isSidebarVisible ? 'md:w-1/6' : 'w-0'} transition-width duration-300`}>
         <HiveSidebar sidebarData={sidebarData} onSidebarToggle={handleSidebarToggle} />
       </div>
-      <div className={`p-4 container bg-slate-600 ${isSidebarVisible ? 'w-5/6' : 'w-full'} transition-width duration-300`}>
+      <div className={`p-4 md:me-5 md:mt-0 mt-4 container ${isSidebarVisible ? 'md:w-5/6' : 'w-full'} transition-width duration-300`}>
         <Outlet />
       </div>
     </div>

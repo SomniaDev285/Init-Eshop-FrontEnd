@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { barIcon, welcomeNext } from '../../assets/svg';
 import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SidebarItem = ({ item }) => {
   const location = useLocation();
@@ -37,9 +37,9 @@ const SidebarItem = ({ item }) => {
             aria-controls="dropdown-example"
             data-collapse-toggle="dropdown-example"
           >
-            {/* {item.iconName.length > 0 && ( */}
-            <FontAwesomeIcon icon="fa-duotone fa-warehouse" />
-            {/* )} */}
+            {item.iconName.length > 0 && (
+              <FontAwesomeIcon icon={['fas', item.iconName]} />
+            )}
             <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
               {item.name}
             </span>
@@ -69,7 +69,7 @@ const SidebarItem = ({ item }) => {
           className={`flex items-center p-2 rounded-lg group text-gray-900 dark:text-white ${isActive ? 'bg-gray-300 dark:bg-gray-600' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
         >
           {item.iconName.length > 0 && (
-            <FontAwesomeIcon icon="fa-duotone fa-warehouse" />
+            <FontAwesomeIcon icon={['fas', item.iconName]} />
           )}
           <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
             {item.name}
