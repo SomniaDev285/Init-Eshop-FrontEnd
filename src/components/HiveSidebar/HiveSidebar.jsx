@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { barIcon, welcomeNext } from '../../assets/svg';
 import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SidebarItem = ({ item }) => {
   const location = useLocation();
@@ -36,6 +37,9 @@ const SidebarItem = ({ item }) => {
             aria-controls="dropdown-example"
             data-collapse-toggle="dropdown-example"
           >
+            {/* {item.iconName.length > 0 && ( */}
+            <FontAwesomeIcon icon="fa-duotone fa-warehouse" />
+            {/* )} */}
             <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
               {item.name}
             </span>
@@ -64,6 +68,9 @@ const SidebarItem = ({ item }) => {
           to={item.link}
           className={`flex items-center p-2 rounded-lg group text-gray-900 dark:text-white ${isActive ? 'bg-gray-300 dark:bg-gray-600' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
         >
+          {item.iconName.length > 0 && (
+            <FontAwesomeIcon icon="fa-duotone fa-warehouse" />
+          )}
           <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
             {item.name}
           </span>
@@ -82,20 +89,14 @@ const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
   const isMobile = useRef(window.innerWidth <= 640);
   const toggleSideBarRef = useRef(null);
   const outsideRef = useRef(null);
-  const [sidebarDisplay, setSidebarDisplay] = useState(null)
 
   const toggleSideBar = () => {
     toggleSideBarRef.current.style.transform = 'translateX(0)';
-    setSidebarDisplay(true);
     onSidebarToggle(true);
   };
 
   useEffect(() => {
     isMobile.current = window.getComputedStyle(outsideRef.current.querySelector('.toggleBtn')).display !== 'none';
-    if (isMobile) {
-      setSidebarDisplay(false)
-      onSidebarToggle(false);
-    }
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
@@ -105,7 +106,6 @@ const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
   const handleOutsideClick = (e) => {
     if (outsideRef.current && !outsideRef.current.contains(e.target) && isMobile.current) {
       toggleSideBarRef.current.style.transform = 'translateX(-100%)';
-      setSidebarDisplay(false);
       onSidebarToggle(false);
     }
   };
@@ -127,7 +127,7 @@ const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
       <aside
         ref={toggleSideBarRef}
         id="sidebar-multi-level-sidebar"
-        className="fixed left-0 w-64 top-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className="fixed left-0 top-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-slate-300 dark:bg-gray-800">
