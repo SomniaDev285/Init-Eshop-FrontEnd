@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Dashboard",
-    "iconName": "",
+    "iconName": "table-columns",
     "tag": "Pro",
     "link": "/dashboard",
     "parent": "",
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "name": "Warehouses",
-    "iconName": "inventoryIcon",
+    "iconName": "warehouse",
     "tag": "",
     "link": "/",
     "parent": "",
@@ -19,7 +19,7 @@
       {
         "id": 3,
         "name": "Main Warehouse",
-        "iconName": "productsIcon",
+        "iconName": "boxes-stacked",
         "tag": "",
         "link": "/dashboard/warehouse/1",
         "parent": "Warehouses",
@@ -28,7 +28,7 @@
       {
         "id": 4,
         "name": "Secondary Warehouse",
-        "iconName": "",
+        "iconName": "boxes-stacked",
         "tag": "",
         "link": "/dashboard/warehouse/2",
         "parent": "Warehouses",
@@ -39,7 +39,7 @@
   {
     "id": 7,
     "name": "Products",
-    "iconName": "settingsIcon",
+    "iconName": "sitemap",
     "tag": "",
     "link": "/dashboard/products",
     "parent": "",

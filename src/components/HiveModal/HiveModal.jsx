@@ -24,6 +24,15 @@ const ModalBody = styled.div`
   position: relative;
   border-radius: 8px;
   z-index: 1001;
+  @media (max-width: 768px) {
+    width: 80%;
+    height: 60%;
+  }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    height: 70%;
+  }
 `;
 
 const CloseButton = styled.button`
