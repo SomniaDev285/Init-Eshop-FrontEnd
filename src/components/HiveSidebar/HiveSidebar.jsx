@@ -3,6 +3,31 @@ import { barIcon, welcomeNext } from '../../assets/svg';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+const ProfileManager = () => {
+  const [profileSettings, setProfileSettings] = useState(false)
+  const toggleProfileSettings = () => {
+    setProfileSettings(!profileSettings)
+  }
+  return (
+    <div className="absolute left-0 bottom-0 flex items-center sm:static sm:inset-auto sm:ml-3 ml-6 mb-3">
+      <div className="relative">
+        <div>
+          <button type="button" onClick={toggleProfileSettings} className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <span className="absolute -inset-1.5"></span>
+            <span className="sr-only">Open user menu</span>
+            <img className="h-12 w-12 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+          </button>
+        </div>
+        <div className={`absolute collapsible ${profileSettings ? 'open' : ''} left-9 bottom-9 z-10 mb-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1`}>
+          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
+          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-1">Settings</a>
+          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 const SidebarItem = ({ item }) => {
   const location = useLocation();
   const isActive = item.link === location.pathname || (item.children && item.children.some(child => child.link === location.pathname));
@@ -128,12 +153,13 @@ const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
         className="fixed w-[17.5rem] left-0 top-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-slate-300 dark:bg-gray-800">
-          <ul className="space-y-2 font-medium">
+        <div className="flex flex-col h-full px-3 py-4 overflow-y-auto bg-slate-300 dark:bg-gray-800">
+          <ul className="space-y-2 font-medium flex-1">
             {sidebarData.map((item) => (
               <SidebarItem key={item.id} item={item} />
             ))}
           </ul>
+          <ProfileManager />
         </div>
       </aside>
     </div>
