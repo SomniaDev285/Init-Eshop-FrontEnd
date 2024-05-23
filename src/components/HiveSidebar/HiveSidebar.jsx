@@ -55,13 +55,11 @@ const SidebarItem = ({ item }) => {
               className="w-6 h-6 dark:img-white"
             />
           </button>
-          {isOpen && (
-            <ul className="ml-3">
-              {item.children.map((child) => (
-                <SidebarItem key={child.id} item={child} />
-              ))}
-            </ul>
-          )}
+          <ul className={`ml-3 collapsible ${isOpen ? 'open' : ''}`}>
+            {item.children.map((child) => (
+              <SidebarItem key={child.id} item={child} />
+            ))}
+          </ul>
         </>
       ) : (
         <Link
