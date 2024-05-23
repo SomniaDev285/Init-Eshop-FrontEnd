@@ -11,13 +11,13 @@ import CreateWarehouse from './CreateWarehouse'
 const HiveWarehouse = ({ warehouseId }) => {
   const warehouse = warehouses.find(warehouse => warehouse.warehouseId === Number(warehouseId))
   const { t, i18n } = useTranslation()
-  const [testModal, setTestModal] = useState(false)
+  const [showCreateForm, setShowCreateForm] = useState(false)
   return (
     <>
       <div className="w-48 my-2">
-        <HiveButton label={t("warehouse.createWarehouse")} onClick={() => setTestModal(true)} />
+        <HiveButton label={t("warehouse.createWarehouse")} onClick={() => setShowCreateForm(true)} />
       </div>
-      <HiveModal showModal={testModal} onClose={() => setTestModal(false)} modalTitle={t("warehouse.createTitle")}>
+      <HiveModal showModal={showCreateForm} onClose={() => setShowCreateForm(false)} modalTitle={t("warehouse.createTitle")}>
         <CreateWarehouse warehouse={warehouse} />
       </HiveModal>
       <HiveDatagrid aggridConfig={aggridConfig.aggridColumnDef} rowData={aggridData} />

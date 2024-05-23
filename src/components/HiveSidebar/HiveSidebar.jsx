@@ -78,17 +78,24 @@ const SidebarItem = ({ item }) => {
   );
 };
 
-const HiveSidebar = ({ sidebarData }) => {
-  const isMobile = useRef(null);
+const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
+  const isMobile = useRef(window.innerWidth <= 640);
   const toggleSideBarRef = useRef(null);
   const outsideRef = useRef(null);
+  const [sidebarDisplay, setSidebarDisplay] = useState(null)
 
   const toggleSideBar = () => {
     toggleSideBarRef.current.style.transform = 'translateX(0)';
+    setSidebarDisplay(true);
+    onSidebarToggle(true);
   };
 
   useEffect(() => {
     isMobile.current = window.getComputedStyle(outsideRef.current.querySelector('.toggleBtn')).display !== 'none';
+    if (isMobile) {
+      setSidebarDisplay(false)
+      onSidebarToggle(false);
+    }
     document.addEventListener('mousedown', handleOutsideClick);
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
@@ -98,27 +105,29 @@ const HiveSidebar = ({ sidebarData }) => {
   const handleOutsideClick = (e) => {
     if (outsideRef.current && !outsideRef.current.contains(e.target) && isMobile.current) {
       toggleSideBarRef.current.style.transform = 'translateX(-100%)';
+      setSidebarDisplay(false);
+      onSidebarToggle(false);
     }
   };
 
   return (
-    <div ref={outsideRef} className="w-64">
+    <div ref={outsideRef}>
       <button
         data-drawer-target="sidebar-multi-level-sidebar"
         data-drawer-toggle="sidebar-multi-level-sidebar"
         aria-controls="sidebar-multi-level-sidebar"
         type="button"
         onClick={toggleSideBar}
-        className="inline-flex toggleBtn left-0 items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        className="fixed z-39 inline-flex toggleBtn left-0 top-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
       >
         <span className="sr-only">Open sidebar</span>
-        <img src={barIcon} className="w-6 h-6" alt="bar icon"></img>
+        <img src={barIcon} className="w-6 h-6" alt="bar icon" />
       </button>
 
       <aside
         ref={toggleSideBarRef}
         id="sidebar-multi-level-sidebar"
-        className="fixed top-16 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        className="fixed left-0 w-64 top-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-slate-300 dark:bg-gray-800">
