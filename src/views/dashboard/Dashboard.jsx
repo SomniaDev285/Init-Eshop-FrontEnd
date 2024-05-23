@@ -6,11 +6,11 @@ import { Outlet } from 'react-router-dom'
 const Dashboard = () => {
   return (
     <>
-      <HiveNavbar />
-      <div className="flex pt-16 pl-4">
-        <div>
-          <HiveSidebar sidebarData={sidebarData} />
-        </div>
+      {/* <HiveNavbar /> */}
+      <div className="flex pl-4">
+        {/* <div> */}
+        <HiveSidebar sidebarData={sidebarData} />
+        {/* </div> */}
         <div className="p-4 container">
           <Outlet />
         </div>
