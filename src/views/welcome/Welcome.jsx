@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
 const Welcome = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [companyName, setCompanyName] = useState('')
   const [warehouseName, setWarehouseName] = useState('')
   const [stepper, setStepper] = useState('company')
