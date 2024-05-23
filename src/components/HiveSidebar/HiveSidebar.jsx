@@ -19,9 +19,9 @@ const ProfileManager = () => {
           </button>
         </div>
         <div className={`absolute collapsible ${profileSettings ? 'open' : ''} left-9 bottom-9 z-10 mb-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1`}>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-1">Settings</a>
-          <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
+          <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-0">Your Profile</a>
+          <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-1">Settings</a>
+          <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-300" role="menuitem" tabIndex="-1" id="user-menu-item-2">Sign out</a>
         </div>
       </div>
     </div>
@@ -118,6 +118,13 @@ const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
     onSidebarToggle(true);
   };
 
+  const handleOutsideClick = (e) => {
+    if (outsideRef.current && !outsideRef.current.contains(e.target) && isMobile.current) {
+      toggleSideBarRef.current.style.transform = 'translateX(-100%)';
+      onSidebarToggle(false);
+    }
+  };
+
   useEffect(() => {
     isMobile.current = window.getComputedStyle(outsideRef.current.querySelector('.toggleBtn')).display !== 'none';
     document.addEventListener('mousedown', handleOutsideClick);
@@ -126,12 +133,6 @@ const HiveSidebar = ({ sidebarData, onSidebarToggle }) => {
     };
   }, []);
 
-  const handleOutsideClick = (e) => {
-    if (outsideRef.current && !outsideRef.current.contains(e.target) && isMobile.current) {
-      toggleSideBarRef.current.style.transform = 'translateX(-100%)';
-      onSidebarToggle(false);
-    }
-  };
 
   return (
     <div ref={outsideRef}>

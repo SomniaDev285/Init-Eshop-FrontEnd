@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import HiveDatagrid from '../HiveDatagrid/HiveDatagrid'
 import warehouses from '../../mock/warehouses.json'
 import aggridConfig from './aggridConfig.json'
@@ -10,7 +10,7 @@ import CreateWarehouse from './CreateWarehouse'
 
 const HiveWarehouse = ({ warehouseId }) => {
   const warehouse = warehouses.find(warehouse => warehouse.warehouseId === Number(warehouseId))
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [showCreateForm, setShowCreateForm] = useState(false)
   return (
     <>

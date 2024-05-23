@@ -22,14 +22,14 @@ const Welcome = () => {
     } else {
       nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
     }
-  }, [companyName, setCompanyName])
+  }, [companyName, setCompanyName, stepper])
   useEffect(() => {
     if (warehouseName.length > 0 && stepper === 'warehouse') {
       nextButtonRef.current.style = 'opacity: 1; cursor: pointer'
     } else {
       nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
     }
-  }, [warehouseName, setWarehouseName])
+  }, [warehouseName, setWarehouseName, stepper])
 
   const addProfile = () => {
     console.log('company: ', companyName)
