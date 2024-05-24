@@ -5,11 +5,12 @@ import HiveButton from '../HiveButton/HiveButton'
 import { useForm } from 'react-hook-form'
 import HiveFormInput from '../HiveFormInput/HiveFormInput'
 
-function CreateWarehouse({ warehouse }) {
+function CreateWarehouse({ warehouse, closeModal }) {
     const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
         console.log('Form Data:', data);
+        closeModal(true)
     };
     return (
         <>

@@ -18,7 +18,7 @@ const HiveWarehouse = ({ warehouseId }) => {
         <HiveButton label={t("warehouse.createWarehouse")} onClick={() => setShowCreateForm(true)} />
       </div>
       <HiveModal showModal={showCreateForm} onClose={() => setShowCreateForm(false)} modalTitle={t("warehouse.createTitle")}>
-        <CreateWarehouse warehouse={warehouse} />
+        <CreateWarehouse warehouse={warehouse} closeModal={(e) => setShowCreateForm(!e)} />
       </HiveModal>
       <HiveDatagrid aggridConfig={aggridConfig.aggridColumnDef} rowData={aggridData} />
     </>
