@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { cross } from '../../assets/svg';
 
-function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey, name, error }) {
+const HiveCombobox = React.forwardRef(({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey, name, error }, ref) => {
     const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState(value);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -73,6 +73,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                             setShowDropdown(false)
                         }
                     }}
+                    ref={ref}
                 />
                 {inputValue.length > 0 && <img src={cross} className="w-4 h-4 cursor-pointer" alt="cross cricle icon" onClick={() => removeSelectedOption()}></img>}
                 <svg
@@ -110,6 +111,6 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
             )}
         </div>
     );
-}
+})
 
 export default HiveCombobox

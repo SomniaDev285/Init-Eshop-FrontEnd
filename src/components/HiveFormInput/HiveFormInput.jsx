@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function HiveFormInput({
+const HiveFormInput = React.forwardRef(({
   type,
   label,
   name,
@@ -9,8 +9,8 @@ function HiveFormInput({
   onChange,
   value,
   error,
-  className
-}) {
+  className,
+}, ref) => {
   const [val, setVal] = useState('')
 
   useEffect(() => {
@@ -35,6 +35,7 @@ function HiveFormInput({
             placeholder={placeholder ? placeholder : 'Input'}
             className={`border ${error ? 'border-red-500' : 'border-gray-500'} rounded-md p-2`}
             onChange={changeVal}
+            ref={ref}
           />
           {error && <span className="text-red-500 text-sm">{error.message}</span>}
         </div>
@@ -44,6 +45,6 @@ function HiveFormInput({
       </div>
     </>
   )
-}
+})
 
 export default HiveFormInput
