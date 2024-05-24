@@ -8,6 +8,7 @@ function HiveFormInput({
   description,
   onChange,
   value,
+  error,
   className
 }) {
   const [val, setVal] = useState('')
@@ -18,23 +19,24 @@ function HiveFormInput({
 
   const changeVal = (e) => {
     setVal(e.target.value)
-    onChange(e.target.value)
+    onChange(e)
   }
 
   return (
     <>
       <div className={`${className}`}>
-        <label className='text-sm' htmlFor="form-input">{label ? label : 'Input Label'}</label>
+        <label className='text-sm' htmlFor={name}>{label ? label : 'Input Label'}</label>
         <div className="flex flex-col">
           <input
-            id="form-input"
+            id={name}
             value={val}
             name={name}
             type={type ? type : 'text'}
             placeholder={placeholder ? placeholder : 'Input'}
-            className="border border-gray-500 rounded-md p-2"
+            className={`border ${error ? 'border-red-500' : 'border-gray-500'} rounded-md p-2`}
             onChange={changeVal}
           />
+          {error && <span className="text-red-500 text-sm">{error.message}</span>}
         </div>
         {description && (
           <span className="text-xs italic text-gray-500">{description}</span>

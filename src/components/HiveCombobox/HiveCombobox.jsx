@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { cross } from '../../assets/svg';
 
-function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey }) {
+function HiveCombobox({ label, value, onSelectionChange, className, offlineData, labelKeyList, valueKey, name, error }) {
     const [inputValue, setInputValue] = useState('');
     const [selectedOption, setSelectedOption] = useState(value);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -57,13 +57,15 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
 
     return (
         <div className={`relative w-full ${className}`}>
-            <label className='text-sm' htmlFor="form-input">{label ? label : 'Input Label'}</label>
-            <div className="flex items-center border border-gray-500 rounded-md p-1">
+            <label className='text-sm' htmlFor={name}>{label ? label : 'Input Label'}</label>
+            <div className={`flex items-center border ${error ? 'border-red-500' : 'border-gray-500'} rounded-md p-1`}>
                 <input
                     type="text"
+                    id={name}
+                    name={name}
                     value={inputValue}
                     onChange={handleInputChange}
-                    className="w-full p-1 focus:outline-none"
+                    className={`w-full p-1 focus:outline-none`}
                     placeholder="Type or select an option"
                     onClick={() => setShowDropdown(true)}
                     onBlur={() => {
@@ -83,6 +85,7 @@ function HiveCombobox({ label, value, onSelectionChange, className, offlineData,
                     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
             </div>
+            {error && <span className="text-red-500 text-sm">{error.message}</span>}
             {showDropdown && (
                 <ul
                     onMouseEnter={() => setIsMouseInside(true)}

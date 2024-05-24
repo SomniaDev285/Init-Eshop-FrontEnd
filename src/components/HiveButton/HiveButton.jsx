@@ -8,11 +8,11 @@ const colorClasses = {
   // Add more colors as needed
 };
 
-const HiveButton = ({ type = 'button', label = 'Button', btnIcon, onClick, bgColor }) => {
+const HiveButton = ({ type = 'button', label = 'Button', btnIcon, onClick, bgColor, className }) => {
   const bgClass = colorClasses[bgColor] || colorClasses.gray; // Default to green if bgColor is not found
 
   return (
-    <div className="w-full h-full cursor-pointer">
+    <div className={`w-full h-full cursor-pointer ${className}`}>
       <button
         type={type}
         onClick={onClick}

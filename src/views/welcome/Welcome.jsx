@@ -17,19 +17,19 @@ const Welcome = () => {
   })
   const nextButtonRef = useRef(null)
   useEffect(() => {
-    if (companyName.length > 0 && stepper === 'company') {
+    if (companyName.length > 0 && stepper === STEP.COMPANY) {
       nextButtonRef.current.style = 'opacity: 1; cursor: pointer'
     } else {
       nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
     }
-  }, [companyName, setCompanyName, stepper])
+  }, [companyName, setCompanyName])
   useEffect(() => {
-    if (warehouseName.length > 0 && stepper === 'warehouse') {
+    if (warehouseName.length > 0 && stepper === STEP.WAREHOUSE) {
       nextButtonRef.current.style = 'opacity: 1; cursor: pointer'
     } else {
       nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
     }
-  }, [warehouseName, setWarehouseName, stepper])
+  }, [warehouseName, setWarehouseName])
 
   const addProfile = () => {
     console.log('company: ', companyName)
@@ -37,7 +37,7 @@ const Welcome = () => {
   }
 
   const handleNextWelcoming = () => {
-    if (companyName.length > 0 && stepper === 'company') {
+    if (companyName.length > 0 && stepper === STEP.COMPANY) {
       setStepper('warehouse')
       if (warehouseName.length === 0) {
         nextButtonRef.current.style = 'opacity: 0.5; cursor: default'
@@ -47,27 +47,27 @@ const Welcome = () => {
         secondLine: '',
         label: t('welcome.WarehouseName'),
       })
-    } else if (warehouseName.length > 0 && stepper === 'warehouse') {
+    } else if (warehouseName.length > 0 && stepper === STEP.WAREHOUSE) {
       setStepper('finish')
       setWelcomeTopic({
         firstLine: t('welcome.doneFirstLine'),
         secondLine: t('welcome.doneSecondLine'),
         label: '',
       })
-    } else if (stepper === 'finish') {
+    } else if (stepper === STEP.FINISH) {
       addProfile()
     }
   }
 
   const handleBackWelcoming = () => {
-    if (stepper === 'warehouse') {
+    if (stepper === STEP.WAREHOUSE) {
       setStepper('company')
       setWelcomeTopic({
         firstLine: t('welcome.companyFirstLine'),
         secondLine: t('welcome.companySecondLine'),
         label: t('welcome.CompanyName'),
       })
-    } else if (stepper === 'finish') {
+    } else if (stepper === STEP.FINISH) {
       setStepper('warehouse')
       setWelcomeTopic({
         firstLine: t('welcome.warehouseFirstLine'),
@@ -77,6 +77,12 @@ const Welcome = () => {
     }
   }
 
+  const STEP = {
+    COMPANY: "company",
+    WAREHOUSE: "warehouse",
+    FINISH: "finish"
+  }
+
   return (
     <div className="App welcome w-full h-full flex justify-center items-center">
       <div className="border- w-1/2 h-1/2 bg-slate-300 rounded-[48px] flex flex-col justify-center items-center relative">
@@ -84,7 +90,7 @@ const Welcome = () => {
         {welcomeTopic.secondLine && (
           <p className="p-4 mb-10 text-3xl">{welcomeTopic.secondLine}</p>
         )}
-        {stepper === 'company' && (
+        {stepper === STEP.COMPANY && (
           <div className="p-4 w-96">
             <HiveInput
               label={welcomeTopic.label}
@@ -93,7 +99,7 @@ const Welcome = () => {
             />
           </div>
         )}
-        {stepper === 'warehouse' && (
+        {stepper === STEP.WAREHOUSE && (
           <div className="p-4 mt-5 w-96">
             <HiveInput
               label={welcomeTopic.label}
@@ -102,7 +108,7 @@ const Welcome = () => {
             />
           </div>
         )}
-        {stepper !== 'finish' ? (
+        {stepper !== STEP.FINISH ? (
           <div
             className="absolute right-7 bottom-7 opacity-50"
             onClick={handleNextWelcoming}
@@ -117,7 +123,7 @@ const Welcome = () => {
             </Link>
           </div>
         )}
-        {stepper !== 'company' && (
+        {stepper !== STEP.COMPANY && (
           <div
             className="absolute left-7 bottom-7 cursor-pointer rotate-180"
             onClick={handleBackWelcoming}
